@@ -35,7 +35,7 @@ class LivePlot(QMainWindow):
         self.size = self.plc.read_by_name('MAIN.Size', pyads.PLCTYPE_INT)
 
         # Gerar os dados para o gráfico
-        self.x = range(1,self.size+1,1)  # Eixo X fixo (tempo)
+        self.x = [-0.01*i for i in range(1,self.size+1,1)]  # Eixo X fixo (tempo)
         self.y = np.zeros(self.size)   # Valores iniciais
 
         # Plotar 
