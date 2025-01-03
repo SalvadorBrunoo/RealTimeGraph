@@ -2,8 +2,9 @@
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <GVL Name="GVL" Id="{2e109e85-6243-451d-b31e-2f2ecaddcb58}">
     <Declaration><![CDATA[VAR_GLOBAL
-	i_Analog 	AT %I* :DINT;
-	q_Led 		AT %Q* :BOOL;
+	i_Analog 	    AT %I* :DINT;
+	i_AnalogSquare 	AT %I* :DINT;
+	q_Led 		    AT %Q* :BOOL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
