@@ -35,8 +35,9 @@ class LivePlot(QMainWindow):
         self.size = self.plc.read_by_name('MAIN.Size', pyads.PLCTYPE_INT)
 
         # Gerar os dados para o gráfico
-        self.x = [-0.01*i for i in range(1,self.size+1,1)]  # Eixo X fixo (tempo)
-        self.y = np.zeros(self.size)   # Valores iniciais
+        self.n = 4 #ordem do filtro
+        self.x = [-0.01*i for i in range(1,self.size+1-self.n,1)]  # Eixo X fixo (tempo)
+        self.y = np.zeros(self.size-self.n)   # Valores iniciais
 
         # Plotar 
         self.plot_curve = self.plot_widget.plot(self.x, self.y, pen='r')
@@ -55,7 +56,7 @@ class LivePlot(QMainWindow):
         """Atualiza o gráfico a cada tick do timer"""
         value = list(self.plc.read_by_name('MAIN.Buffer_y', pyads.PLCTYPE_REAL * self.size))
 
-        self.y = update(value)
+        self.y = update(value, self.n)
 
         self.plot_curve.setData(self.x, self.y)  # Atualiza o gráfico com os novos dados
 

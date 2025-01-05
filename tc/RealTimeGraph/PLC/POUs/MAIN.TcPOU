@@ -4,8 +4,8 @@
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
 	//Buffer
-	Size 		:INT:=10000;
-    Buffer_y 	:ARRAY[1..10000] OF REAL; 
+	Size 		:INT:=1000;
+    Buffer_y 	:ARRAY[1..1000] OF REAL; 
     i 			:INT := 1; 
 	
 	//Buffer
@@ -31,7 +31,7 @@ Buffer1_y[1] := DINT_TO_REAL(i_AnalogSquare);
 
 //Heart Bit
 HBIT := HBIT + 1;
-IF HBIT >= 1000 THEN
+IF HBIT >= 100 THEN
 	q_Led := NOT q_Led;
 	HBIT := 0;
 END_IF]]></ST>
